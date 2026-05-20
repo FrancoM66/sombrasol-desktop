@@ -12,6 +12,15 @@ Run on a Windows machine after `npm run build:win`.
 - [ ] Open the gatehouse check-in screen and scan a barcode with the USB scanner;
       the code lands in the scan field exactly as in the browser.
 
+## Printing (desktop silent print)
+- [ ] With a default printer set, open a visitor pass and click **Print Pass**.
+      The pass prints to the default printer with **no dialog**, and a
+      "Pass sent to printer" toast appears.
+- [ ] The printed pass shows the org name, visitor name, license plate, address,
+      and time, laid out like the browser pass.
+- [ ] Remove/disable the default printer and click **Print Pass** again.
+      The Windows system print dialog appears as a fallback (guard is not stranded).
+
 ## Lockdown
 - [ ] External links open in the system browser, not in the app window.
 - [ ] DevTools shortcuts (F12, Ctrl+Shift+I) do nothing.
