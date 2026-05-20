@@ -3,7 +3,7 @@
 Run on a Windows machine after `npm run build:win`.
 
 ## Install & launch
-- [ ] Run `dist/Sombrasol Guard-Setup-<version>.exe`. SmartScreen "unknown publisher"
+- [ ] Run `dist/Sombrasol-Guard-Setup.exe`. SmartScreen "unknown publisher"
       warning is expected (unsigned) — choose "Run anyway".
 - [ ] App launches full-screen with no address bar or tabs.
 
