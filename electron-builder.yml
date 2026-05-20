@@ -12,7 +12,7 @@ extraResources:
       - offline.html
 win:
   target: nsis
-  artifactName: ${productName}-Setup-${version}.${ext}
+  artifactName: Sombrasol-Guard-Setup.${ext}
   # Code signing (add later, no structural change):
   #   certificateFile: build/cert.pfx
   #   certificatePassword: ${env.CSC_KEY_PASSWORD}
