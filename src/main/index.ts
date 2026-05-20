@@ -6,6 +6,7 @@ import { setupWatchdog } from './watchdog';
 import { setupAutoUpdater } from './updater';
 import { registerAdminExit, unregisterShortcuts } from './shortcuts';
 import { offlinePagePath } from './paths';
+import { setupPrinting } from './printing';
 
 const singleInstance = app.requestSingleInstanceLock();
 if (!singleInstance) {
@@ -17,6 +18,7 @@ if (!singleInstance) {
     const offlinePath = offlinePagePath(app.isPackaged, process.resourcesPath, __dirname);
 
     ipcMain.handle('app:get-version', () => app.getVersion());
+    setupPrinting();
 
     const win = createMainWindow(config.allowedOrigin, preloadPath);
     setupWatchdog(win, config.appUrl, offlinePath);

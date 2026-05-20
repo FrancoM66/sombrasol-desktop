@@ -7,4 +7,6 @@ contextBridge.exposeInMainWorld('sombrasolDesktop', {
   onConnectivityChange: (callback: (status: ConnectivityStatus) => void): void => {
     ipcRenderer.on('connectivity', (_event, status: ConnectivityStatus) => callback(status));
   },
+  printPass: (html: string): Promise<{ ok: boolean; error?: string }> =>
+    ipcRenderer.invoke('print:pass', html),
 });
