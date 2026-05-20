@@ -1,0 +1,26 @@
+appId: tech.sombrasol.guard
+productName: Sombrasol Guard
+directories:
+  output: dist
+  buildResources: build
+files:
+  - out/**/*
+extraResources:
+  - from: resources
+    to: .
+    filter:
+      - offline.html
+win:
+  target: nsis
+  artifactName: ${productName}-Setup-${version}.${ext}
+  # Code signing (add later, no structural change):
+  #   certificateFile: build/cert.pfx
+  #   certificatePassword: ${env.CSC_KEY_PASSWORD}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+publish:
+  # CONFIRM this URL before first release. electron-updater reads this feed.
+  provider: generic
+  url: https://updates.sombrasol.tech/desktop
