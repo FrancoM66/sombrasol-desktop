@@ -1,6 +1,8 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import { htmlToDataUrl } from './print-logic';
 
+const PRINT_TIMEOUT_MS = 15000;
+
 export interface PrintResult {
   ok: boolean;
   error?: string;
@@ -24,12 +26,18 @@ function printHtml(html: string): Promise<PrintResult> {
     });
 
     let settled = false;
+    let timeout: NodeJS.Timeout;
     const finish = (result: PrintResult): void => {
       if (settled) return;
       settled = true;
+      clearTimeout(timeout);
       if (!win.isDestroyed()) win.close();
       resolve(result);
     };
+
+    timeout = setTimeout(() => {
+      finish({ ok: false, error: 'Print timed out' });
+    }, PRINT_TIMEOUT_MS);
 
     win.webContents.once('did-fail-load', (_e, _code, desc) => {
       finish({ ok: false, error: desc || 'Failed to load pass' });
