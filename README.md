@@ -20,7 +20,7 @@ SOMBRASOL_APP_URL=https://staging.sombrasol.tech npm run dev
 
 ## Build the Windows installer
 ```bash
-npm run build:win  # outputs dist/Sombrasol Guard-Setup-<version>.exe
+npm run build:win  # outputs dist/Sombrasol-Guard-Setup.exe
 ```
 
 > **Windows note:** electron-builder extracts a signing toolchain that contains
