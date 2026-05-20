@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sombrasol — Offline</title>
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0; height: 100vh; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 1rem;
+        font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0;
+      }
+      h1 { font-size: 1.5rem; margin: 0; }
+      p { margin: 0; color: #94a3b8; }
+      button {
+        margin-top: 1rem; padding: 0.6rem 1.4rem; font-size: 1rem;
+        border: 0; border-radius: 0.5rem; background: #2563eb; color: white; cursor: pointer;
+      }
+      .status { margin-top: 2rem; font-size: 0.8rem; color: #64748b; }
+    </style>
+  </head>
+  <body>
+    <h1>You're offline</h1>
+    <p>Reconnecting automatically&hellip; you can keep this window open.</p>
+    <button onclick="location.reload()">Retry now</button>
+    <div class="status" id="status"></div>
+    <script>
+      const api = window.sombrasolDesktop;
+      if (api) {
+        api.getVersion().then((v) => {
+          document.getElementById('status').textContent = 'Sombrasol Guard v' + v;
+        });
+      }
+    </script>
+  </body>
+</html>
