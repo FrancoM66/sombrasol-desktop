@@ -13,6 +13,7 @@ extraResources:
 win:
   target: nsis
   artifactName: Sombrasol-Guard-Setup.${ext}
+  icon: build/icon.ico
   # Code signing (add later, no structural change):
   #   certificateFile: build/cert.pfx
   #   certificatePassword: ${env.CSC_KEY_PASSWORD}
