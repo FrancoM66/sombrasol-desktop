@@ -3,6 +3,8 @@ import { htmlToDataUrl } from './print-logic';
 
 const PRINT_TIMEOUT_MS = 15000;
 
+let printInFlight = false;
+
 export interface PrintResult {
   ok: boolean;
   error?: string;
@@ -10,6 +12,10 @@ export interface PrintResult {
 
 export function setupPrinting(): void {
   ipcMain.handle('print:pass', (_event, html: string): Promise<PrintResult> => {
+    if (printInFlight) {
+      return Promise.resolve({ ok: false, error: 'Print already in progress' });
+    }
+    printInFlight = true;
     return printHtml(html);
   });
 }
@@ -30,6 +36,7 @@ function printHtml(html: string): Promise<PrintResult> {
     const finish = (result: PrintResult): void => {
       if (settled) return;
       settled = true;
+      printInFlight = false;
       clearTimeout(timeout);
       if (!win.isDestroyed()) win.close();
       resolve(result);
