@@ -23,6 +23,10 @@ nsis:
   perMachine: false
   allowToChangeInstallationDirectory: true
 publish:
-  # CONFIRM this URL before first release. electron-updater reads this feed.
-  provider: generic
-  url: https://updates.sombrasol.tech/desktop
+  # Repo is public — no token needed at runtime to READ the feed.
+  # releaseType: release publishes a non-draft release so both auto-update
+  # (electron-updater reads latest.yml) and the /latest/download/ link resolve.
+  provider: github
+  owner: FrancoM66
+  repo: sombrasol-desktop
+  releaseType: release
