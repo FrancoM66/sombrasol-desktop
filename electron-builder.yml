@@ -10,6 +10,7 @@ extraResources:
     to: .
     filter:
       - offline.html
+      - icon.png
 win:
   target: nsis
   artifactName: Sombrasol-Guard-Setup.${ext}

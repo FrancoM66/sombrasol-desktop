@@ -1,15 +1,21 @@
 import { BrowserWindow, shell } from 'electron';
+import { join } from 'node:path';
 import { isAllowedNavigation } from './navigation';
 
 const SESSION_PARTITION = 'persist:sombrasol';
 const BLOCKED_SHORTCUT_KEYS = new Set(['I', 'J', 'C', 'R', '+', '-', '=']);
 
 export function createMainWindow(allowedOrigin: string, preloadPath: string): BrowserWindow {
+  const iconPath = app_isPackaged()
+    ? join(process.resourcesPath, 'icon.png')
+    : join(__dirname, '../../resources/icon.png');
+
   const win = new BrowserWindow({
     show: false,
     kiosk: true,
     fullscreen: true,
     autoHideMenuBar: true,
+    icon: iconPath,
     webPreferences: {
       preload: preloadPath,
       contextIsolation: true,
