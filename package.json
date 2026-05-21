@@ -1,6 +1,6 @@
 {
   "name": "sombrasol-desktop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sombrasol Guard Desktop - kiosk shell for gatehouse check-in",
   "main": "./out/main/index.js",
   "author": "Sombrasol",
